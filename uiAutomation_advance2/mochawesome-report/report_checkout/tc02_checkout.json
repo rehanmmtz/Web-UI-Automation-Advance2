@@ -1,0 +1,141 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-10-26T19:32:29.067Z",
+    "end": "2025-10-26T19:32:34.975Z",
+    "duration": 5908,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "cc8d086d-aed4-4480-bd85-0b0ce0e70086",
+      "title": "",
+      "fullFile": "D:\\Bootcamp QA\\uiAutomation_advance2\\Test Case\\tc02_checkout.js",
+      "file": "\\Test Case\\tc02_checkout.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "b2556754-1ec4-4cba-ba53-2b5f1180e2e9",
+          "title": "Test SAUCEDEMO",
+          "fullFile": "D:\\Bootcamp QA\\uiAutomation_advance2\\Test Case\\tc02_checkout.js",
+          "file": "\\Test Case\\tc02_checkout.js",
+          "beforeHooks": [
+            {
+              "title": "\"before each\" hook in \"Test SAUCEDEMO\"",
+              "fullTitle": "Test SAUCEDEMO \"before each\" hook in \"Test SAUCEDEMO\"",
+              "timedOut": false,
+              "duration": 1217,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//sebelum test dijalankan buka browser.\n        console.log('ini before test');\n        driver = await new Builder()\n            .forBrowser('chrome')\n            .setChromeOptions(options)\n            .build();\n        await driver.manage().window().maximize();\n        await driver.get('https://www.saucedemo.com/v1/');",
+              "err": {},
+              "uuid": "e0f70a29-1970-42ed-85e7-2795f0098c33",
+              "parentUUID": "b2556754-1ec4-4cba-ba53-2b5f1180e2e9",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after each\" hook in \"Test SAUCEDEMO\"",
+              "fullTitle": "Test SAUCEDEMO \"after each\" hook in \"Test SAUCEDEMO\"",
+              "timedOut": false,
+              "duration": 2120,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//setelah semua test selesai quit browser.\n        console.log('ini after test');\n        await driver.sleep(2000);\n        await driver.quit();",
+              "err": {},
+              "uuid": "04d439de-7239-4945-a0bf-4603eb32822c",
+              "parentUUID": "b2556754-1ec4-4cba-ba53-2b5f1180e2e9",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "test checkout",
+              "fullTitle": "Test SAUCEDEMO test checkout",
+              "timedOut": false,
+              "duration": 2562,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "let input = await driver.findElement(LoginPage.inputUsername);\nawait input.sendKeys(\"standard_user\");\nlet password = await driver.findElement(LoginPage.inputPassword);\nawait password.sendKeys(\"secret_sauce\");\nlet loginBtn = await driver.findElement(LoginPage.buttonLogin);\nawait loginBtn.click();\nlet klik = await driver.findElement(CheckoutPage.buttonAddToCart);\nawait klik.click();\nlet cart = await driver.findElement(CheckoutPage.buttonCart);\nawait cart.click();\nlet checkout = await driver.findElement(CheckoutPage.buttonCheckout);\nawait checkout.click();\nlet firstName = await driver.findElement(CheckoutPage.inputFirstName);\nawait firstName.sendKeys(\"swag\");\nlet lastName = await driver.findElement(CheckoutPage.inputLastName);\nawait lastName.sendKeys(\"labs\");\nlet postalCode = await driver.findElement(CheckoutPage.inputPostalCode);\nawait postalCode.sendKeys(\"12345\");\nlet continueBtn = await driver.findElement(CheckoutPage.buttonContinue);\nawait continueBtn.click();\nlet finishBtn = await driver.findElement(CheckoutPage.buttonFinish);\nawait finishBtn.click();\nlet ss_sukseschekout = await driver.takeScreenshot();\nfs.writeFileSync('report_ss/checkout/ss_sukseschekout.png', Buffer.from(ss_sukseschekout, 'base64'));\n//assert\nlet thankYou = await driver.wait(until.elementLocated(By.className(\"complete-header\")), 50000);\nlet selesai = await thankYou.getText();\nassert.strictEqual(selesai, \"THANK YOU FOR YOUR ORDER\");",
+              "err": {},
+              "uuid": "992c1628-a48b-47af-b4c7-a6cc5a058145",
+              "parentUUID": "b2556754-1ec4-4cba-ba53-2b5f1180e2e9",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "992c1628-a48b-47af-b4c7-a6cc5a058145"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 2562,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 50000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "11.7.4"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "tc02_checkout",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "mochawesome-report/report_checkout",
+        "reportFilename": "tc02_checkout"
+      },
+      "version": "6.3.0"
+    }
+  }
+}

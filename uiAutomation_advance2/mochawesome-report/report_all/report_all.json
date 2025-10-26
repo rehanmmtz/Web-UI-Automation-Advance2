@@ -1,0 +1,237 @@
+{
+  "stats": {
+    "suites": 2,
+    "tests": 3,
+    "passes": 3,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-10-26T19:34:26.087Z",
+    "end": "2025-10-26T19:34:40.025Z",
+    "duration": 13938,
+    "testsRegistered": 3,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "f7b48de9-09e7-463c-a41e-66ce45553e03",
+      "title": "",
+      "fullFile": "",
+      "file": "",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "35ae8d2d-69bb-4c2e-8b3d-6f6e061420dd",
+          "title": "Test SAUCEDEMO",
+          "fullFile": "D:\\Bootcamp QA\\uiAutomation_advance2\\Test Case\\tc01_login.js",
+          "file": "\\Test Case\\tc01_login.js",
+          "beforeHooks": [
+            {
+              "title": "\"before each\" hook in \"Test SAUCEDEMO\"",
+              "fullTitle": "Test SAUCEDEMO \"before each\" hook in \"Test SAUCEDEMO\"",
+              "timedOut": false,
+              "duration": 1167,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//sebelum test dijalankan buka browser.\n        console.log('ini before test');\n        driver = await new Builder()\n            .forBrowser('chrome')\n            .setChromeOptions(options)\n            .build();\n        await driver.manage().window().maximize();\n        await driver.get('https://www.saucedemo.com/v1/');",
+              "err": {},
+              "uuid": "e6b174ac-4fad-4de1-975f-3eebe14af6fa",
+              "parentUUID": "35ae8d2d-69bb-4c2e-8b3d-6f6e061420dd",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after each\" hook in \"Test SAUCEDEMO\"",
+              "fullTitle": "Test SAUCEDEMO \"after each\" hook in \"Test SAUCEDEMO\"",
+              "timedOut": false,
+              "duration": 2120,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//setelah semua test selesai quit browser.\n        console.log('ini after test');\n        await driver.sleep(2000);\n        await driver.quit();",
+              "err": {},
+              "uuid": "172a3730-737f-4048-8c7d-2060a195f15d",
+              "parentUUID": "35ae8d2d-69bb-4c2e-8b3d-6f6e061420dd",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "ini test valid",
+              "fullTitle": "Test SAUCEDEMO ini test valid",
+              "timedOut": false,
+              "duration": 1239,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "let input = await driver.findElement(LoginPage.inputUsername);\nawait input.sendKeys(\"standard_user\");\n// let ss_kolom_username = await input.takeScreenshot();\n// fs.writeFileSync('report_ss/ss_kolom_username.png', Buffer.from(ss_kolom_username, 'base64'));\nlet password = await driver.findElement(LoginPage.inputPassword);\nawait password.sendKeys(\"secret_sauce\");\nlet loginBtn = await driver.findElement(LoginPage.buttonLogin);\nawait loginBtn.click();\nlet produk = await driver.wait(until.elementLocated(By.className(\"product_label\")), 50000);\nlet isDisplayed = await produk.isDisplayed();\nassert.strictEqual(isDisplayed, true);\nlet ss_validlogin = await driver.takeScreenshot();\nfs.writeFileSync('report_ss/login/ss_validlogin.png', Buffer.from(ss_validlogin, 'base64'));",
+              "err": {},
+              "uuid": "6d973918-26cc-4d1f-8a95-b117da1394fa",
+              "parentUUID": "35ae8d2d-69bb-4c2e-8b3d-6f6e061420dd",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "ini test lockedout user",
+              "fullTitle": "Test SAUCEDEMO ini test lockedout user",
+              "timedOut": false,
+              "duration": 512,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "let input = await driver.findElement(LoginPage.inputUsername);\nawait input.sendKeys(\"locked_out_user\");\nlet password = await driver.findElement(LoginPage.inputPassword);\nawait password.sendKeys(\"secret_sauce\");\nlet loginBtn2 = await driver.findElement(LoginPage.buttonLogin);\nawait loginBtn2.click();\nlet ss_lockedoutuser = await driver.takeScreenshot();\nfs.writeFileSync('report_ss/login/ss_lockedoutuser.png', Buffer.from(ss_lockedoutuser, 'base64'));\n//assert\nawait driver.wait(until.elementLocated(By.css('h3[data-test=\"error\"]')), 50000);\nlet erorWarning = await driver.findElement(By.css('h3[data-test=\"error\"]'));\nlet eror = await erorWarning.getText();\n// console.log('locked user error text:', eror);\nassert.strictEqual(eror, \"Epic sadface: Sorry, this user has been locked out.\");",
+              "err": {},
+              "uuid": "8ae19992-4728-4663-8547-70656a751a38",
+              "parentUUID": "35ae8d2d-69bb-4c2e-8b3d-6f6e061420dd",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "6d973918-26cc-4d1f-8a95-b117da1394fa",
+            "8ae19992-4728-4663-8547-70656a751a38"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 1751,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 50000
+        },
+        {
+          "uuid": "38b2737e-7f9d-4279-b510-bc7b42b2ca94",
+          "title": "Test SAUCEDEMO",
+          "fullFile": "D:\\Bootcamp QA\\uiAutomation_advance2\\Test Case\\tc02_checkout.js",
+          "file": "\\Test Case\\tc02_checkout.js",
+          "beforeHooks": [
+            {
+              "title": "\"before each\" hook in \"Test SAUCEDEMO\"",
+              "fullTitle": "Test SAUCEDEMO \"before each\" hook in \"Test SAUCEDEMO\"",
+              "timedOut": false,
+              "duration": 1048,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//sebelum test dijalankan buka browser.\n        console.log('ini before test');\n        driver = await new Builder()\n            .forBrowser('chrome')\n            .setChromeOptions(options)\n            .build();\n        await driver.manage().window().maximize();\n        await driver.get('https://www.saucedemo.com/v1/');",
+              "err": {},
+              "uuid": "6b73e587-38b1-4444-bca7-ff2037e436d7",
+              "parentUUID": "38b2737e-7f9d-4279-b510-bc7b42b2ca94",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after each\" hook in \"Test SAUCEDEMO\"",
+              "fullTitle": "Test SAUCEDEMO \"after each\" hook in \"Test SAUCEDEMO\"",
+              "timedOut": false,
+              "duration": 2116,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//setelah semua test selesai quit browser.\n        console.log('ini after test');\n        await driver.sleep(2000);\n        await driver.quit();",
+              "err": {},
+              "uuid": "8d976255-f69f-495c-a158-209daf3b8d26",
+              "parentUUID": "38b2737e-7f9d-4279-b510-bc7b42b2ca94",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "test checkout",
+              "fullTitle": "Test SAUCEDEMO test checkout",
+              "timedOut": false,
+              "duration": 2266,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "let input = await driver.findElement(LoginPage.inputUsername);\nawait input.sendKeys(\"standard_user\");\nlet password = await driver.findElement(LoginPage.inputPassword);\nawait password.sendKeys(\"secret_sauce\");\nlet loginBtn = await driver.findElement(LoginPage.buttonLogin);\nawait loginBtn.click();\nlet klik = await driver.findElement(CheckoutPage.buttonAddToCart);\nawait klik.click();\nlet cart = await driver.findElement(CheckoutPage.buttonCart);\nawait cart.click();\nlet checkout = await driver.findElement(CheckoutPage.buttonCheckout);\nawait checkout.click();\nlet firstName = await driver.findElement(CheckoutPage.inputFirstName);\nawait firstName.sendKeys(\"swag\");\nlet lastName = await driver.findElement(CheckoutPage.inputLastName);\nawait lastName.sendKeys(\"labs\");\nlet postalCode = await driver.findElement(CheckoutPage.inputPostalCode);\nawait postalCode.sendKeys(\"12345\");\nlet continueBtn = await driver.findElement(CheckoutPage.buttonContinue);\nawait continueBtn.click();\nlet finishBtn = await driver.findElement(CheckoutPage.buttonFinish);\nawait finishBtn.click();\nlet ss_sukseschekout = await driver.takeScreenshot();\nfs.writeFileSync('report_ss/checkout/ss_sukseschekout.png', Buffer.from(ss_sukseschekout, 'base64'));\n//assert\nlet thankYou = await driver.wait(until.elementLocated(By.className(\"complete-header\")), 50000);\nlet selesai = await thankYou.getText();\nassert.strictEqual(selesai, \"THANK YOU FOR YOUR ORDER\");",
+              "err": {},
+              "uuid": "67b41c5c-0faa-4f1e-9a59-e884f177e445",
+              "parentUUID": "38b2737e-7f9d-4279-b510-bc7b42b2ca94",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "67b41c5c-0faa-4f1e-9a59-e884f177e445"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 2266,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 50000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "11.7.4"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "report_all",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "mochawesome-report/report_all",
+        "reportFilename": "report_all"
+      },
+      "version": "6.3.0"
+    }
+  }
+}
